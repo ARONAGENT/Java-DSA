@@ -2,10 +2,11 @@ package oops.inheritance;
 
 public class mainClass {
     public static void main(String[] args) {
-        Two two=new Two();
-        int val=two.sum(2,3);
-        // here Two obj called One Class method called Single inheritance
-        int val2 =two.calSquare(6);
+        Three obj= new Three();
+        // here Three class Can Run Two class methods as well as one Class Methods called Multilevel Inheritance
+        int val=obj.sum(2,3);
+        int val2 =obj.calSquare(6);
+        obj.printName("Rohan");
         System.out.println("Sum is "+val);
         System.out.println("Square is "+val2);
     }
