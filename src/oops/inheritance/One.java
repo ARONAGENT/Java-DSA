@@ -1,6 +1,6 @@
 package oops.inheritance;
-// base class
-public class One {
+// derived  class
+public class One extends Three{
     public int calSquare(int a){
         return a*a;
     }
