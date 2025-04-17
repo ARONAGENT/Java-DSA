@@ -1,0 +1,126 @@
+classes: class is set of collection of data members and methods
+objects: object is a runtime entity use for calling methods in other classes
+inheritance:
+ simple: One Derived class inherits Base Class know as simple inheritance
+ multiple: One Derived class inherits two or more base class known as multiple inheritance
+           In java there is no multiple inheritance because of ambiguity and security purposes
+ multilevel: One class inherits other class and other class inherits another class this behaviour called multilevel inheritance
+ hierarchical: more than one derived class can inherits one base class known as hierarchical inheritance
+ hybrid: combination of types of inheritance called hybrid inheritance
+ private:
+ public:
+constructor: 1.Its should public and constructor have same class name
+             2.its don't have return type
+             3.it is use for initialization of data members
+             4.In One class there are more than one constructor available with a difference of parameter
+             5.Constructor is directly called when object is created or instantiated
+constructor behaviour in inheritance:
+in Analyzing the derived class constructor runs first inside there is super class its calls based class constructor and it runs first
+and then derived class constructor runs
+but according to constructor behaviour in inheritance the derived class constructor invokes first
+method overloading: more than one constructor created in class with different parameter class constructor/method overloading.
+method overriding:
+abstract class and abstract functions: abstract class - abstract class have the ability of don't creating object of class
+                                                        abstract class have abstract method as well as normal method/functions
+
+                                       abstract method - abstract method don't have body
+                                                         abstract method should be write in abstract class
+                                                         its only the option the use of abstract method to inherits the other classes and use them accordingly with body
+
+final class and final functions: Final class selfish hai — dusron ko inherit karne nahi deta, lekin khud kisi ko inherit kar leta hai
+                                 //Final classes in Java are classes that cannot be inherited — meaning, no other class can extend them.
+                                 final method is used to no  methods same in two two class if inheritance occur
+---
+
+### **Class**
+- A class is a collection of data members and methods.
+- Acts as a blueprint or template.
+
+### **Object**
+- Object is a runtime entity.
+- Used for calling methods defined in a class.
+
+---
+
+### **Inheritance**
+
+**1. Simple Inheritance**
+- One derived class inherits one base class.
+
+**2. Multiple Inheritance**
+- One derived class inherits two or more base classes.
+- Not supported in Java through classes due to ambiguity and security reasons.
+
+**3. Multilevel Inheritance**
+- One class inherits another, and that class inherits another.
+- Forms a chain of inheritance.
+
+**4. Hierarchical Inheritance**
+- Multiple derived classes inherit a single base class.
+
+**5. Hybrid Inheritance**
+- Combination of different types of inheritance.
+- Not directly supported in Java with classes.
+
+---
+
+### **Access Specifiers**
+
+**Private**
+- Accessible only within the class.
+
+**Public**
+- Accessible from anywhere.
+
+---
+
+### **Constructor**
+1. Constructor name should be the same as the class name.
+2. It should be public.
+3. It doesn’t have a return type.
+4. Used for initialization of data members.
+5. A class can have more than one constructor (constructor overloading).
+6. Constructor is automatically called when an object is created.
+
+---
+
+### **Constructor Behavior in Inheritance**
+- When derived class constructor is called, it internally calls the base class constructor.
+- Base class constructor executes first, followed by derived class constructor.
+
+---
+
+### **Method Overloading**
+- Multiple methods or constructors with the same name but different parameters in the same class.
+
+### **Method Overriding**
+- Redefining a base class method in the derived class with the same name and parameters.
+
+---
+
+### **Abstract Class and Abstract Method**
+
+**Abstract Class**
+- Object cannot be created from an abstract class.
+- Can contain both abstract and non-abstract methods.
+
+**Abstract Method**
+- Declared without a body.
+- Must be defined in an abstract class.
+- Must be implemented in the derived class.
+
+---
+
+### **Final Class and Final Method**
+
+**Final Class**
+- Cannot be inherited by other classes.
+- It can inherit from other classes, but no class can inherit it.
+- Final class is like “selfish” — does not allow others to extend it.
+
+**Final Method**
+- Cannot be overridden in a subclass.
+- Used when the method’s behavior must remain the same in inheritance.
+
+---
+
