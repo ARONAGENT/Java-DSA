@@ -18,7 +18,7 @@ Then "Rahul constructor" prints.
 * */
 public class Rahul extends Rohan{
     public Rahul(){
-        super("AronAgent");
+        super();
         System.out.println("Rahul Constructor Running ...(derived class).");
     }
     public void product(){
