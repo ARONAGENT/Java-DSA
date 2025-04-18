@@ -32,6 +32,9 @@ final class and final functions: Final class selfish hai — dusron ko inherit k
                                  final class kabhi bhi base class nhi banega woh sirf derived class banega ...
                                  //Final classes in Java are classes that cannot be inherited — meaning, no other class can extend them.
                                  final method is used to no  methods same in two two class if inheritance occur
+
+interfaces-> An interface in Java is a completely abstract type that contains only method signatures and constants.
+             In the context of inheritance ,multiple inheritance are allowed with interfaces whereas with classes not allowed
 ---
 
 ### **Class**
@@ -124,5 +127,20 @@ final class and final functions: Final class selfish hai — dusron ko inherit k
 - Cannot be overridden in a subclass.
 - Used when the method’s behavior must remain the same in inheritance.
 
+
+Interfaces in Java
+Interface is a completely abstract type — it only contains method signatures and constants.
+
+All methods in an interface are public and abstract by default (unless using default or static methods from Java 8).
+
+It is used to achieve multiple inheritance in Java.
+
+A class uses the implements keyword to inherit and define the methods of an interface.
+
+Interface cannot have any constructor — because you can’t create an object of an interface.
+
+All variables in an interface are public, static, and final by default.
+
+A class can implement multiple interfaces.
 ---
 
