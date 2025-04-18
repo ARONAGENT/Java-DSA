@@ -1,0 +1,7 @@
+Persistence and Serialization
+--------------------------------
+Persistence
+Persistence means storing data permanently (like saving to a database or file) so it can be reused even after the program ends.
+
+Serialization
+Serialization is the process of converting an object into a byte stream to save it to a file, database, or send over a network.
