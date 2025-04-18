@@ -22,12 +22,14 @@ method overloading: more than one constructor created in class with different pa
 method overriding:
 abstract class and abstract functions: abstract class - abstract class have the ability of don't creating object of class
                                                         abstract class have abstract method as well as normal method/functions
+                                                        abstract class always be based class and never be derived class
 
                                        abstract method - abstract method don't have body
                                                          abstract method should be write in abstract class
                                                          its only the option the use of abstract method to inherits the other classes and use them accordingly with body
 
 final class and final functions: Final class selfish hai — dusron ko inherit karne nahi deta, lekin khud kisi ko inherit kar leta hai
+                                 final class kabhi bhi base class nhi banega woh sirf derived class banega ...
                                  //Final classes in Java are classes that cannot be inherited — meaning, no other class can extend them.
                                  final method is used to no  methods same in two two class if inheritance occur
 ---
