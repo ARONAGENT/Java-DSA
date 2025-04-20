@@ -1,0 +1,87 @@
+##dependency Injection##
+*Class One ke function ko Class Two ke function ki zarurat hoti hai**, toh us situation ko hum **dependency** kehte hain.
+
+Ab ye dependency ko fulfill karne ke 2 tareeke hote hain:
+
+---
+
+### ❌ Without Dependency Injection (Tight Coupling):
+```java
+class ClassOne {
+    ClassTwo obj = new ClassTwo(); // yahan khud object bana raha hai
+    void doSomething() {
+        obj.helpFunction(); // ClassTwo ka method use kar raha hai
+    }
+}
+```
+- Yahan **ClassOne tightly coupled hai ClassTwo se**, because wo khud object bana raha hai.
+- Change karna mushkil ho jata hai (test, replace, modify).
+
+---
+
+### ✅ With Dependency Injection (Loose Coupling):
+```java
+class ClassOne {
+    ClassTwo obj;
+    ClassOne(ClassTwo obj) { // object bahar se mil raha hai
+        this.obj = obj;
+    }
+    void doSomething() {
+        obj.helpFunction(); // ClassTwo ka method use kar raha hai
+    }
+}
+```
+- Yahan ClassTwo ka object **constructor ke through inject** ho raha hai.
+- Ye hota hai **constructor injection**, which is a type of Dependency Injection.
+- ClassOne ko farak nahi padta ClassTwo ka object kaise bana — wo sirf use karta hai.
+
+---
+
+### 🗣️ Hinglish Summary:
+> Jab ClassOne ko ClassTwo ke method chahiye, toh ya toh wo khud object banaye (tight coupling) ya koi aur de de (loose coupling = dependency injection).
+> **Loose coupling better hoti hai** — flexible, testable, maintainable.
+
+---
+
+Absolutely! Here's the explanation of **Dependency Injection (DI)** in both **English + Hinglish** with a clear **real-life analogy**:
+
+---
+
+## ✅ What is Dependency Injection (English)
+**Dependency Injection (DI)** is a design pattern where the **dependencies of a class are provided from the outside**, rather than the class creating them itself.
+
+### 🔸 Why?
+To make code more **modular**, **testable**, and **maintainable**.
+
+---
+
+## 🗣️ Hinglish Explanation:
+Dependency Injection matlab class ke andar jo cheezein chahiye (like objects of other classes), woh khud banana nahi padta — koi aur bana ke de deta hai.
+
+> **"Jo chahiye, woh ready-made milta hai!"**
+
+---
+
+## 🎯 Beautiful Analogy:
+### 💡 Tea Making Analogy:
+Imagine a **Chaiwala** (Tea Seller) class.
+
+### ❌ Without Dependency Injection:
+Chaiwala khud **milk laata hai**, **sugar laata hai**, **patti laata hai**, sab kuch khud hi handle karta hai.
+Agar kuch change karna ho (jaise almond milk chahiye), toh Chaiwala class ko modify karna padega — not good!
+
+### ✅ With Dependency Injection:
+Ab ek **supplier** hai jo milk, sugar, patti sab ready bana ke deta hai.
+Chaiwala bas ingredients leke chai banata hai — **clean, flexible, reusable code**!
+
+---
+
+## 💻 Technical Context (Spring Boot):
+Spring automatically injects the required objects using annotations like:
+- `@Autowired`
+- `@Component`
+- `@Service`
+- `@Repository`
+
+---
+
