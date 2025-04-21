@@ -1,0 +1,64 @@
+✅ Multithreading in Java
+Multithreading means when multiple threads (small units of a process) run concurrently to perform tasks simultaneously.
+
+🔹 What is a Thread?
+A thread is a small, lightweight unit of a process that runs independently.
+It shares the same memory but has its own execution path.
+
+🚀 Advantages of Multithreading
+Parallel Execution – Multiple tasks run at the same time.
+Increases CPU Utilization – Keeps CPU busy by switching between threads.
+Responsive Applications – UI doesn’t freeze; user interaction is smooth.
+Multi-tiered Architecture – Useful in web applications (handling UI, DB, server-side separately with threads).
+
+🔄 Thread Lifecycle (States of a Thread)
+New – Thread object is created.
+Runnable – Thread is ready to run (after calling start() method).
+Executing – Thread is actively running and executing code.
+Blocked – Thread is paused using sleep(), yield(), or waiting for a resource.
+Terminated – Thread finishes execution or is stopped manually.
+
+✅ 1. By Extending the Thread Class
+Here we create a new class that extends the built-in Thread class and override the run() method.
+package multithreading;
+
+public class WithThread extends Thread{
+    public void run(){
+        for (int i = 0; i <=10 ; i++) {
+            System.out.println(Thread.currentThread().getName()+" : "+i);
+        }
+    }
+
+    public static void main(String[] args) {
+       Thread thread1=new Thread(new WithThread());
+       Thread thread2=new Thread(new WithThread());
+
+        System.out.println("thread one is Processing....");
+        thread1.start();
+        System.out.println("thread two is Processing....");
+        thread2.start();
+    }
+}
+
+✅ 2. By Implementing the Runnable Interface
+This approach is more flexible and preferred when we want to extend another class.
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Thread is running using Runnable interface.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyRunnable obj = new MyRunnable();
+        Thread t1 = new Thread(obj); // pass object to Thread constructor
+        t1.start(); // starts the thread and runs the run() method
+    }
+}
+🆚 Which One to Use?
+
+Feature	           Thread Class	                         Runnable Interface
+Inheritance  	Can't extend other classes	         Can implement multiple interfaces
+Reusability	    Less reusable	                     More reusable and flexible
+Best Practice	❌ Not preferred	                 ✅ Preferred in real-world apps
+
