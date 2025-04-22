@@ -1,0 +1,104 @@
+### 📚 LinkedList in Java
+
+`LinkedList` is part of the Java Collections Framework and is found in `java.util` package.
+It implements **List**, **Deque**, and **Queue** interfaces, making it a versatile
+data structure for both list and queue operations.
+
+It is based on a doubly linked list, where each node contains a reference to the next and the previous node.
+
+### 🔹 Key Properties of LinkedList
+-----------------------------------------------------------------------------------------
+| Property                    | Description                                             |
+|-----------------------------|---------------------------------------------------------|
+| Ordered                     | Maintains insertion order                               |
+| Allows Duplicates           | Yes                                                     |
+| Indexed Access              | Slower than ArrayList (O(n)) but has access             |
+| Resizable                   | Grows/shrinks automatically                             |
+| Not Synchronized            | Not thread-safe                                         |
+| Null Values                 | Allowed                                                 |
+| Generic Support             | Supports generics like `LinkedList<String>`             |
+| Implements                  | `List`, `Deque`, `Queue`, `Cloneable`, `Serializable`   |
+-----------------------------------------------------------------------------------------
+---
+
+### 🔹 Internal Structure
+
+- **Doubly Linked List**
+- Each node has:
+  - Data
+  - Pointer to next node
+  - Pointer to previous node
+
+---
+
+### 🔹 When to use LinkedList?
+
+- When **frequent insertion/deletion** is required at the beginning or middle.
+- When **random access is not frequent** (since it’s O(n)).
+
+---
+
+### 🔹 Basic Operations
+--------------------------------------------------------------------------------------------
+| Operation         | Method(s)                                                             |
+|------------------|------------------------------------------------------------------------|
+| Add Element      | `add(E e)` / `add(index, E e)` / `addFirst()` / `addLast()`            |
+| Get Element      | `get(int index)` / `getFirst()` / `getLast()`                          |
+| Remove Element   | `remove(index)` / `remove(Object)` / `removeFirst()` / `removeLast()`  |
+| Update Element   | `set(int index, E e)`                                                  |
+| Size of List     | `size()`                                                               |
+| Clear All        | `clear()`                                                              |
+| Check Presence   | `contains(Object o)`                                                   |
+| Convert to Array | `toArray()`                                                            |
+| Iteration        | `iterator()` / `descendingIterator()` (reverse iteration)              |
+---------------------------------------------------------------------------------------------
+---
+
+### 🔄 Queue/Deque Operations
+
+Because LinkedList implements `Deque`, you can use it as a queue (FIFO) or stack (LIFO):
+
+#### As Queue (FIFO):
+- `offer()`, `poll()`, `peek()`
+
+#### As Stack (LIFO):
+- `push()`, `pop()`, `peek()`
+
+---
+
+### 🔒 Synchronized vs Non-Synchronized (Same as ArrayList)
+------------------------------------------------------------------------------------------------------------------
+| Feature               | Synchronized Collections                                | Non-Synchronized Collections |
+|-----------------------|---------------------------------------------------------|------------------------------|
+| Thread-Safety         | ✅ Safe for multiple threads                            | ❌ Not thread-safe           |
+| Performance           | ❌ Slower (due to locking)                              | ✅ Faster                    |
+| Examples              | `Collections.synchronizedList(new LinkedList<>())`      | `LinkedList`, `ArrayList`     |
+| When to Use           | Multithreaded apps                                      | Single-threaded apps          |
+-------------------------------------------------------------------------------------------------------------------
+---
+
+### 🔄 Additional Useful LinkedList Methods
+----------------------------------------------------------------------
+| Method                      | Description                         |
+|-----------------------------|--------------------------------------|
+| `addFirst(E e)`             | Adds element to beginning            |
+| `addLast(E e)`              | Adds element to end                  |
+| `removeFirst()`             | Removes and returns first element    |
+| `removeLast()`              | Removes and returns last element     |
+| `getFirst()`                | Gets first element                   |
+| `getLast()`                 | Gets last element                    |
+| `offer(E e)`                | Adds to the queue                    |
+| `poll()`                    | Retrieves and removes head           |
+| `peek()`                    | Retrieves head without removing      |
+| `push(E e)`                 | Pushes to stack                      |
+| `pop()`                     | Pops from stack                      |
+| `descendingIterator()`      | Returns an iterator in reverse order |
+| `clone()`                   | Shallow copy                         |
+| `indexOf(Object o)`         | First index of occurrence            |
+| `lastIndexOf(Object o)`     | Last index of occurrence             |
+----------------------------------------------------------------------
+
+### ✅ Example: Creating a Synchronized LinkedList
+
+List<String> syncList = Collections.synchronizedList(new LinkedList<>());
+
