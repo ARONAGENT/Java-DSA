@@ -7,11 +7,14 @@ import java.util.ArrayList;
 // 3.null values are allowed
 // 4.retrieve and remove the element from index
 // 5.insert the element at anywhere
+// 6.arraylist are non-synchronized
 
 public class Functions_Of_Arraylist {
     public static void main(String[] args) {
         ArrayList<String> names=new ArrayList<>();
 
+        boolean data=names.isEmpty();
+        System.out.println(data);
         names.add("Rohan");
         names.add("Rahul");
         names.add("Yash");
@@ -20,12 +23,12 @@ public class Functions_Of_Arraylist {
         names.add(null);
         names.add("Rohan");
         names.remove(5);
-        int value=names.size();
-        System.out.println(value);
-        names.addFirst("Athrava");
-        boolean val=names.contains("Yash");
+        int val=names.size();
         System.out.println(val);
-        //        names.clear();
+        names.addFirst("Athrava");
+        boolean valu=names.contains("Yash");
+        System.out.println(valu);
+//        names.clear();
         names.set(1,"Om kale");
         System.out.println(names);
 

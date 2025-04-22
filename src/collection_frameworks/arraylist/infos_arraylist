@@ -34,3 +34,39 @@ If used in multithreaded environment, use:
 Collections.synchronizedList(new ArrayList<>())
 or use CopyOnWriteArrayList from java.util.concurrent.
 
+
+🔒 Synchronized vs Non-Synchronized in Java Collections
+
+Feature	        Synchronized Collections	                        Non-Synchronized Collections
+Thread-Safety	Yes – safe to use with multiple threads	            No – not safe in multi-threaded apps
+Performance	    Slower – overhead of locking            	        Faster – no locking involved
+Examples	    Vector, Hashtable, Collections.synchronizedList()	ArrayList, HashMap, HashSet
+Usage	        Use in multithreading environment	                Use in single-threaded environment
+
+🔄 Additional Useful ArrayList Methods:
+
+Method	Description
+get(int index)	                Returns element at the specified position
+set(int index, E element)	    Replaces element at specified index
+add(E element)	                Adds element to end
+add(int index, E element)	    Inserts element at specified index
+remove(int index)	            Removes element at specified position
+remove(Object o)	            Removes first occurrence of the element
+clear()	                        Removes all elements from the list
+contains(Object o)	            Checks if list contains specified element
+indexOf(Object o)	            Returns index of first occurrence
+lastIndexOf(Object o)	        Returns index of last occurrence
+toArray()	                    Converts list to array
+iterator()	                    Returns iterator for the list
+ensureCapacity(int minCapacity)	Increases capacity of the list
+trimToSize()	                Trims size to current list size
+clone()	                        Returns shallow copy of the list
+subList(int fromIndex,          Returns a portion of the list
+int toIndex)
+
+
+✅ Making ArrayList Synchronized:
+List<String> syncList = Collections.synchronizedList(new ArrayList<>());
+
+Now the list can be safely accessed by multiple threads
+— but still manual synchronization may be needed during iteration.
