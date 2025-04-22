@@ -1,0 +1,36 @@
+ArrayList is a part of the Java Collections Framework and is found in java.util package.
+It is a resizable array implementation of the List interface — meaning, it can grow or shrink dynamically as elements are added or removed.
+
+🔹 Key Properties of ArrayList
+
+Property	                    Description
+Ordered     	        Maintains the insertion order of elements.
+Allows Duplicates	    Yes, duplicate values are allowed.
+Indexed Access	        Allows random access using index (like arrays).
+Resizable	            Grows automatically when capacity is exceeded.
+Not Synchronized	    Not thread-safe by default (can be made synchronized).
+Can store null values	Yes, null values are allowed.
+Generic Support	        Supports generics like ArrayList<String>.
+Implements	            List, RandomAccess, Cloneable, Serializable interfaces.
+
+
+🔹 Basic Operations
+Operation	    Method
+Add element	    add(E e) or add(index, e)
+Get element	    get(int index)
+Remove element	remove(index) or remove(obj)
+Update element	set(int index, E e)
+Size of list	size()
+Check presence	contains(Object o)
+Clear all	    clear()
+Looping	for, for-each, or iterator()
+
+
+Internally uses a dynamic array.
+
+Default initial capacity = 10.
+Increases capacity by 50% when full.
+If used in multithreaded environment, use:
+Collections.synchronizedList(new ArrayList<>())
+or use CopyOnWriteArrayList from java.util.concurrent.
+
