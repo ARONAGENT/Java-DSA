@@ -1,0 +1,68 @@
+Great question! Here's a complete overview of **Java Collections Framework** — explained neatly and with all important components listed:
+
+---
+
+## ✅ What is Java Collections Framework?
+
+Java Collections Framework is a **set of classes and interfaces** that provide **ready-made data structures** to store, manipulate, and access groups of objects efficiently.
+
+It supports operations like **searching, sorting, insertion, deletion, and updating**.
+
+---
+
+## 🔹 Interfaces in Collections Framework:
+------------------------------------------------------------------------------
+| Interface     |              Description                                   |
+|---------------|------------------------------------------------------------|
+| `Collection`  | Root interface for most collection classes                 |
+| `List`        | Ordered collection, allows duplicates                      |
+| `Set`         | Unordered collection, no duplicates                        |
+| `Queue`       | Used to hold elements before processing                    |
+| `Deque`       | Double-ended queue (insert/remove from both ends)          |
+| `Map`         | Key-value pairs (not a true child of Collection interface) |
+| `SortedSet`   | Set with sorted elements                                   |
+| `NavigableSet`| SortedSet with navigation methods                          |
+| `SortedMap`   | Map with sorted keys                                       |
+| `NavigableMap`| SortedMap with navigation support                          |
+------------------------------------------------------------------------------
+---
+
+## 🔹 Classes in Collections Framework:
+
+### 🔸 **List Implementations**
+- `ArrayList`
+- `LinkedList`
+- `Vector`
+- `Stack`
+
+### 🔸 **Set Implementations**
+- `HashSet`
+- `LinkedHashSet`
+- `TreeSet`
+
+### 🔸 **Queue/Deque Implementations**
+- `PriorityQueue`
+- `ArrayDeque`
+
+### 🔸 **Map Implementations**
+- `HashMap`
+- `LinkedHashMap`
+- `TreeMap`
+- `Hashtable`
+- `ConcurrentHashMap`
+
+---
+
+## 🔹 Utility Classes
+- `Collections` – contains utility methods like `sort()`, `reverse()`, `shuffle()` etc.
+- `Arrays` – for array-related operations
+- `Comparator` and `Comparable` – for custom sorting
+
+---
+
+## 🎯 Summary:
+> Java Collections Framework = **Interfaces + Implementing Classes + Utility Classes**
+> It helps in managing **data efficiently** and reduces the need to write your own data structures.
+
+---
+
