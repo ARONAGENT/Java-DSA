@@ -1,0 +1,93 @@
+## 📌 **ArrayDeque in Java**
+
+`ArrayDeque` (Array Double Ended Queue) is a **resizable-array implementation**
+of the `Deque` interface in Java. It allows **insertion and removal from both ends**
+(head and tail) with better performance than `LinkedList` in most cases.
+
+📦 It is part of the `java.util` package.
+
+---
+
+### 🔹 **Key Properties of ArrayDeque**
+-------------------------------------------------------------------------------------
+| Property                          | Description                                   |
+|----------------------------------|------------------------------------------------|
+| ✅ **Implements**                | `Deque` (extends `Queue`)                      |
+| 🧱 **Underlying Structure**       | **Resizable array** (circular buffer)         |
+| 🔄 **Supports FIFO & LIFO**      | Acts like both Queue and Stack                 |
+| ❌ **Nulls not allowed**         | Throws `NullPointerException`                  |
+| 🔁 **Dynamic Resizing**          | Grows as needed, no fixed capacity             |
+| ❌ **Thread-safe?**              | ❌ No — not synchronized                       |
+| 🚫 **Random Access?**            | ❌ No — unlike `ArrayList`                     |
+| 🧪 **Performance**               | Faster than `LinkedList` for Deque operations  |
+-------------------------------------------------------------------------------------
+---
+
+### 🔹 **Basic Operations**
+----------------------------------------------------------------------- |
+| Operation                       | Method(s)                           |
+|--------------------------------|--------------------------------------|
+| Add to front                   | `addFirst(E e)`, `offerFirst(E e)`   |
+| Add to rear                    | `addLast(E e)`, `offerLast(E e)`     |
+| Remove from front              | `removeFirst()`, `pollFirst()`       |
+| Remove from rear               | `removeLast()`, `pollLast()`         |
+| Peek front/rear (no remove)    | `peekFirst()`, `peekLast()`          |
+| Acts as Stack                  | `push(E e)`, `pop()`                 |
+| Acts as Queue                  | `offer(E e)`, `poll()`               |
+-------------------------------------------------------------------------
+---
+
+### 🔹 **Common Methods**
+---------------------------------------------------------------------------
+| Method                     | Description                                |
+|---------------------------|---------------------------------------------|
+| `add(E e)`                | Adds to the tail                            |
+| `remove()`                | Removes from head                           |
+| `element()`               | Retrieves head (throws exception if empty)  |
+| `peek()`                  | Retrieves head (null if empty)              |
+| `size()`                  | Returns number of elements                  |
+| `clear()`                 | Empties the deque                           |
+| `contains(Object o)`     | Checks if element exists                     |
+---------------------------------------------------------------------------
+---
+
+### 🚫 **Limitations**
+- No capacity limit (but still memory-bound)
+- Not thread-safe (use `ConcurrentLinkedDeque` or manually synchronize if needed)
+- Cannot store `null` (unlike `LinkedList`)
+
+---
+
+## 🆚 Comparison: **`ArrayDeque` vs `LinkedList` as Deque**
+--------------------------------------------------------------------------------------------------------------------
+| Feature                      | `ArrayDeque`                          | `LinkedList`                              |
+|------------------------------|----------------------------------------|------------------------------------------|
+| Implementation               | Resizable **array**                    | **Doubly linked list**                   |
+| Performance                  | **Faster** for most Deque operations   | Slightly **slower** due to node creation |
+| Memory Overhead              | Lower – no node objects                | Higher – stores `prev`/`next` refs       |
+| Allows `null`                | ❌ **No**                              | ✅ **Yes**                               |
+| Thread-safe?                 | ❌ No                                   | ❌ No                                   |
+| Random access                | ❌ No                                   | ❌ No                                   |
+| Insert/delete at ends        | ✅ Fast                                 | ✅ Fast                                 |
+| Acts as Queue and Stack      | ✅ Yes                                  | ✅ Yes                                  |
+--------------------------------------------------------------------------------------------------------------------
+---
+
+## ✅ When to Use What?
+----------------------------------------------------------------------------------------
+| Use Case                                  | Prefer                                   |
+|-------------------------------------------|------------------------------------------|
+| Frequent insert/remove at both ends       | Both work — but **ArrayDeque is faster** |
+| Need to allow `null`                      | Use `LinkedList`                         |
+| Need minimal memory footprint             | Use `ArrayDeque`                         |
+| Need to iterate or manipulate middle      | Use `LinkedList` (with `ListIterator`)   |
+----------------------------------------------------------------------------------------
+---
+
+## 🔁 Summary
+
+- **`ArrayDeque`** is a modern, fast, array-based Deque — ideal for Stack and Queue operations.
+- **`LinkedList`** is more flexible but heavier in memory and slightly slower for Deque operations.
+- Both implement the **`Deque` interface** and can be used as **Queue (FIFO)** or **Stack (LIFO)**.
+
+---
