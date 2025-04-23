@@ -91,3 +91,28 @@ of the `Deque` interface in Java. It allows **insertion and removal from both en
 - Both implement the **`Deque` interface** and can be used as **Queue (FIFO)** or **Stack (LIFO)**.
 
 ---
+------------------------------------------------------------------------------------------------------------------------------------------------
+Factor               | LinkedList                                                        | ArrayDeque                                           |
+------------------------------------------------------------------------------------------------------------------------------------------------
+Underlying Structure | Doubly Linked List (each node has prev & next references)         | Resizable Circular Array                             |
+Memory Usage         | Higher: Each node stores actual data + 2 references (prev & next) | Lower: Stores only actual data in array              |
+Cache Performance    | Poor: Nodes are scattered in memory                               | Excellent: Data stored in contiguous memory (array)  |
+Access Time          | O(1) at ends, but worse random access                             | O(1) at both ends, but no random access too          |
+Reallocation         | Not needed, but insertion/removal involves node objects           | Handled automatically, resizes when needed           |
+Overhead             | More overhead due to Node objects                                 | Less overhead, faster GC-friendly                    |
+Null Elements        | ✅ Allowed                                                        | ❌ Not allowed (throws NullPointerException)         |
+Speed                | Slower than ArrayDeque for most operations                         | Faster due to simple array-based structure          |
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+🧠 Summary: When to Use What?
+✅ Use ArrayDeque if:
+
+You want a fast and memory-efficient deque or queue.
+You don’t need to store null.
+You don’t care about index-based access or middle insertions.
+
+✅ Use LinkedList if:
+
+You need to perform frequent middle insertions/deletions.
+You want both List and Deque behavior.
+You’re okay with a bit of performance overhead.
