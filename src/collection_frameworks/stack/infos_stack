@@ -1,0 +1,142 @@
+=## 🔷 What is `Stack` in Java?
+
+- `Stack` is a **class** in Java that is part of the **Java Collection Framework**.
+- It is present in the `java.util` package.
+- A Stack follows LIFO (Last In First Out) ordering — the last element added is the first to be removed.
+
+> ✅ It extends the **Vector** class, meaning it inherits all methods from `Vector`.
+
+---
+
+### 📦 Where does Stack fit in Collection Framework?
+
+```
+         Collection
+             |
+            List
+             |
+          Vector
+             |
+           Stack
+```
+
+---
+
+## 📚 Characteristics of Stack
+-------------------------------------------------------------------------------------------------------------
+| Property                    | Description                                                                |
+|----------------------------|-----------------------------------------------------------------------------|
+| Insertion Order            | Maintains insertion order (inherits from Vector)                            |
+| Allows Duplicates          | ✅ Yes                                                                      |
+| Allows Null                | ✅ Yes                                                                      |
+| Thread Safe                | ✅ Yes (inherited from Vector, so methods are synchronized)                 |
+| Access Type                | Only top element is accessible directly (`peek()` / `pop()`)                |
+| Element Order              | Follows **LIFO** (Last In First Out)                                        |
+| Resizable                  | ✅ Yes, dynamic resizing (from Vector)                                      |
+| Indexed Access             | ✅ Yes, since it inherits from `Vector`                                     |
+| Not Fail-safe              | ❌ Iterators may throw `ConcurrentModificationException`                    |
+-------------------------------------------------------------------------------------------------------------
+---
+
+## 🧠 Internal Working
+
+- Internally, `Stack` uses a **dynamic array** (inherited from `Vector`).
+- As elements are added, the array resizes when needed.
+- Stack operates using **`push`** and **`pop`** methods which add/remove from the top.
+
+---
+
+## 🔁 Core Stack Methods
+-------------------------------------------------------------------------------------------
+| Method              | Description                                                       |
+|---------------------|-------------------------------------------------------------------|
+| `push(E item)`      | Adds item to the top of the stack                                 |
+| `pop()`             | Removes and returns the top item                                  |
+| `peek()`            | Returns the top item without removing it                          |
+| `empty()`           | Checks if the stack is empty                                      |
+| `search(Object o)`  | Returns the 1-based position from top of the stack (or -1 if not) |
+-------------------------------------------------------------------------------------------
+> ⚠️ `Stack` also inherits all `Vector` methods like `add()`, `remove()`, `get()`, etc.
+
+---
+
+## ✅ Example Usage
+
+```java
+import java.util.Stack;
+
+public class StackExample {
+    public static void main(String[] args) {
+        Stack<String> books = new Stack<>();
+
+        books.push("Java");
+        books.push("Python");
+        books.push("C++");
+
+        System.out.println("Stack: " + books);  // [Java, Python, C++]
+
+        System.out.println("Top element: " + books.peek());  // C++
+        System.out.println("Removed: " + books.pop());       // C++
+        System.out.println("Now: " + books);                 // [Java, Python]
+
+        System.out.println("Is empty? " + books.empty());    // false
+
+        System.out.println("Search for Java: " + books.search("Java")); // 2 (1-based)
+        System.out.println("Search for C++: " + books.search("C++"));   // -1
+    }
+}
+```
+
+---
+
+## 🆚 Stack vs Other Collections
+----------------------------------------------------------------------------------------------------------------------|
+| Feature         | Stack                        | Vector                          | ArrayDeque (Recommended Stack)   |
+|----------------|-------------------------------|---------------------------------|----------------------------------|
+| LIFO Structure | ✅ Yes                         | ❌ No                         | ✅ Yes                          |
+| Thread-Safe    | ✅ Yes (synchronized)          | ✅ Yes                        | ❌ No (but faster)              |
+| Performance    | ❌ Slower (due to sync)        | ❌ Slower                     | ✅ Better                       |
+| Preferred      | Legacy code                   | Legacy code                     | Modern stack implementation     |
+| Grows Dynamically | ✅ Yes                      | ✅ Yes                        | ✅ Yes                          |
+-----------------------------------------------------------------------------------------------------------------------
+---
+
+### 🚫 Limitations of Stack
+
+- **Legacy Class**: Stack is a legacy class, and not preferred for modern use.
+- **Performance**: Because of synchronization (thread safety), performance is lower.
+- **Limited Methods**: Lacks many useful stack operations compared to `Deque`.
+
+---
+
+### ✅ Modern Replacement: Use **Deque** as Stack
+
+Java recommends using `Deque` (`ArrayDeque`) for stack operations:
+
+```java
+import java.util.ArrayDeque;
+
+public class ModernStack {
+    public static void main(String[] args) {
+        ArrayDeque<String> stack = new ArrayDeque<>();
+
+        stack.push("HTML");
+        stack.push("CSS");
+        stack.push("JS");
+
+        System.out.println(stack);         // [JS, CSS, HTML]
+        System.out.println(stack.pop());   // JS
+        System.out.println(stack.peek());  // CSS
+    }
+}
+```
+
+---
+
+## 🔐 Thread Safety (Synchronized)
+
+- Since `Stack` inherits from `Vector`, all methods like `push()`, `pop()`, etc., are synchronized.
+- Good for multithreaded use but leads to performance issues.
+- If you don’t need thread-safety, use **ArrayDeque** instead.
+
+---
