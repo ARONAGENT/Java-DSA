@@ -1,0 +1,112 @@
+### ✅ What is `PriorityQueue` in Java?
+
+`PriorityQueue` is a class in the **Java Collections Framework** that implements the
+ **Queue** interface using a heap data structure.
+
+📦 Package: `java.util`
+
+🔧 Internal Implementation: Based on Binary Heap (specifically a **Min Heap** by default)
+
+### 🔹 Key Properties of `PriorityQueue`
+----------------------------------------------------------------------------------------------------------
+| Feature                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| **Order**                | Does **not maintain insertion order**                                       |
+| **Priority-based access**| Elements are ordered by **natural ordering** or a **custom comparator**     |
+| **Duplicates**           | Allowed                                                                     |
+| **Null values**          | Not allowed (throws `NullPointerException`)                                 |
+| **Thread-safety**        | **Not synchronized**                                                        |
+| **Time Complexity**      | Insertion: O(log n), Retrieval: O(log n)                                    |
+| **Implements**           | `Queue<E>`, `Collection<E>`                                                 |
+| **Generic**              | Yes (`PriorityQueue<T>`)                                                    |
+----------------------------------------------------------------------------------------------------------
+---
+
+### 🔹 Basic Operations
+-----------------------------------------------------------------------------------
+| Method                  | Description                                            |
+|-------------------------|--------------------------------------------------------|
+| `add(E e)`              | Inserts element into the queue                         |
+| `offer(E e)`            | Same as add, but returns false if insertion fails      |
+| `peek()`                | Retrieves head (highest priority) without removing     |
+| `poll()`                | Retrieves and removes the head                         |
+| `remove()`              | Removes head of the queue                              |
+| `clear()`               | Removes all elements                                   |
+| `size()`                | Returns number of elements                             |
+| `contains(Object o)`    | Checks if an element is present                        |
+| `toArray()`             | Converts queue to array                                |
+| `iterator()`            | Gets an iterator, but **not in priority order**        |
+------------------------------------------------------------------------------------
+---
+
+### 🔄 Example:
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+pq.add(30);
+pq.add(10);
+pq.add(20);
+System.out.println(pq); // Internally sorted: [10, 30, 20], but print order may vary
+System.out.println(pq.poll()); // 10 (smallest)
+System.out.println(pq.peek()); // 20 (next smallest)
+
+
+### 🔧 Custom Ordering with Comparator (Max Heap behavior)
+
+PriorityQueue<Integer> maxPQ = new PriorityQueue<>(Collections.reverseOrder());
+maxPQ.add(10);
+maxPQ.add(30);
+maxPQ.add(20);
+System.out.println(maxPQ.poll()); // 30 (largest)
+
+
+### 🧠 Internals: Binary Heap (Min Heap & Max Heap)
+
+#### 🔹 What is a Binary Heap?
+
+A **Binary Heap** is a complete binary tree used to maintain a **priority queue**.
+
+- **Min Heap**: Parent node is **smaller than** its children.
+- **Max Heap**: Parent node is **greater than** its children.
+
+#### 🌳 Heap Structure:
+
+```
+Min Heap:                          Max Heap:
+      5                                 50
+     / \                               /  \
+   10   15                           30   40
+  /                                   \
+20                                    10
+```
+
+#### 🔁 Operations in Heap:
+-------------------------------------------------------------------------
+| Operation     | Time Complexity | Description                         |
+|---------------|-----------------|-------------------------------------|
+| Insert        | O(log n)        | Add at last, then "heapify up"      |
+| Remove (poll) | O(log n)        | Remove root, "heapify down"         |
+| Peek          | O(1)            | Return root                         |
+-------------------------------------------------------------------------
+---
+
+### 🧵 Thread Safety
+
+`PriorityQueue` is **not thread-safe**. To use in a multi-threaded environment:
+
+```java
+Queue<Integer> pq = Collections.synchronizedCollection(new PriorityQueue<>());
+```
+
+Or use **`PriorityBlockingQueue`** from `java.util.concurrent` for advanced concurrency support.
+
+---
+
+### ✅ Use Cases
+
+- Job scheduling
+- Bandwidth management
+- Pathfinding (A*, Dijkstra)
+- Huffman encoding
+- Event-driven systems
+
+---
