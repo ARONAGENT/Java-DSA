@@ -33,6 +33,9 @@ public class Vector_Functions {
         // ✅ addElement() is a legacy method to add an element at the end
         cities.addElement("china");
 
+        // vector functions.... 1.insertElementAt,2.addElement,3.removeAllElements
+        cities.insertElementAt("japan",2);
+
         // ✅ elementAt(index) retrieves element at specific index (similar to get())
         System.out.println("Element at index 1: " + cities.elementAt(1));
 
@@ -65,8 +68,31 @@ public class Vector_Functions {
         }
         System.out.println();
 
+        //Checking size and capacity
+        System.out.println("Size of vector: " + cities.size());
+        System.out.println("Capacity of vector: " + cities.capacity());
+        // Iterating using for loop
+        System.out.println("\nIterating using for loop:");
+        for (int i = 0; i < cities.size(); i++) {
+            System.out.println(cities.get(i));
+        }
+        // Iterating using for-each loop
+        System.out.println("\nIterating using for-each loop:");
+        for (String cityname : cities) {
+            System.out.println(cityname);
+        }
+
+        System.out.println("Index of 'Japan': " + cities.indexOf("Japan"));
+
         // ✅ clear() removes all elements from vector
         cities.clear();
+        //vector functions....
+        cities.removeAllElements();
         System.out.println("After clearing the vector: " + cities);
+
+
+
+
     }
+
 }
