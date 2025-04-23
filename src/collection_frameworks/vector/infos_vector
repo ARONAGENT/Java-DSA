@@ -1,0 +1,98 @@
+### 🔷 What is Vector in Java?
+
+- `Vector` is a class in Java that implements the **List** interface.
+- It is part of the Java Collection Framework.
+- Introduced in Java 1.0, it was initially part of legacy collections (like `Hashtable`, `Enumeration`), but later restructured under `java.util` package in the Collections Framework.
+
+---
+
+### 📦Where does Vector fit in Collection Framework?
+         Collection
+            |
+      -------List -------
+     /        |         \
+ ArrayList  LinkedList  Vector
+
+- `Vector` implements:
+  - `List` → for ordered collection
+  - `RandomAccess` → for fast index-based access
+  - `Cloneable` → supports object cloning
+  - `Serializable` → supports serialization
+
+---
+
+### 🔑 **Key Properties of Vector**
+-------------------------------------------------------------------------------------------------------------
+| Property                    | Description                                                                 |
+|-----------------------------|-----------------------------------------------------------------------------|
+| Ordered                     | Maintains insertion order                                                   |
+| Duplicates Allowed          | Yes, you can store duplicate elements                                       |
+| Null Allowed                | Yes, null elements are allowed                                              |
+| Index-Based Access          | Yes, you can get or set elements using `get(index)` or `set(index, value)`  |
+| Resizable                   | Grows automatically when full                                               |
+| Thread-Safe (Synchronized)  | ✅ Yes, methods are synchronized internally                                 |
+| Performance                 | ❌ Slower compared to `ArrayList` due to synchronization overhead           |
+| Growable Capacity           | Increases capacity by **doubling** the size when full                       |
+| Fail-Safe Iterator          | ❌ No, throws `ConcurrentModificationException` in concurrent modification  |
+-------------------------------------------------------------------------------------------------------------
+---
+
+### 📌 **Vector is Synchronized (Not Non-Synchronized)**
+
+❗Correction: Vector is synchronized by default, which means:
+
+- All its methods (like `add`, `remove`, `get`) are thread-safe.
+- But, it's not recommended in modern multithreaded applications because:
+  - It synchronizes every method, even when not needed.
+  - Instead, prefer `Collections.synchronizedList()` or `CopyOnWriteArrayList`for better performance.
+
+---
+
+### 🧠 **Internal Working**
+
+- Internally uses a **dynamic array**.
+- **Initial capacity** is 10.
+- **Capacity doubles** each time the array becomes full:
+  ```java
+  newCapacity = oldCapacity * 2;
+  ```
+
+---
+
+### 🔁 **Commonly Used Methods in Vector**
+---------------------------------------------------------------------------------------------------
+| Method                          | Description                                                   |
+|---------------------------------|---------------------------------------------------------------|
+| `add(E e)`                      | Add element to end                                            |
+| `add(int index, E e)`           | Insert at index                                               |
+| `get(int index)`                | Get element at index                                          |
+| `set(int index, E e)`           | Replace element                                               |
+| `remove(int index)`             | Remove by index                                               |
+| `remove(Object o)`              | Remove by value                                               |
+| `contains(Object o)`            | Check if exists                                               |
+| `indexOf(Object o)`             | First index of object                                         |
+| `lastIndexOf(Object o)`         | Last index of object                                          |
+| `clear()`                       | Remove all elements                                           |
+| `size()`                        | Returns current size                                          |
+| `capacity()`                    | Returns current capacity of the vector                        |
+| `clone()`                       | Returns a shallow copy                                        |
+| `elementAt(int index)`          | Legacy method to access elements                              |
+| `addElement(E e)`               | Legacy method to add elements                                 |
+| `firstElement()` & `lastElement()` | Returns first or last element                              |
+| `toArray()`                     | Convert to array                                              |
+| `iterator()`                    | Returns iterator                                              |
+| `removeAllElements()`           | Legacy method to clear vector                                 |
+---------------------------------------------------------------------------------------------------
+
+---
+
+### 🆚 Vector vs ArrayList
+----------------------------------------------------------------------------
+| Feature         | Vector                    | ArrayList                  |
+|---------------- |---------------------------|----------------------------|
+| Thread-Safety   | ✅ Synchronized           | ❌ Not synchronized        |
+| Performance     | ❌ Slower (due to sync)   | ✅ Faster                  |
+| Growth          | Doubles capacity          | Grows by 50%               |
+| Preferred in    | Legacy multithreading     | Modern applications        |
+----------------------------------------------------------------------------
+---
