@@ -1,0 +1,87 @@
+## 🔍 **HashSet Duplicate Kyun Store Nahi Karta – Internal Working Explained**
+
+---
+
+### ✅ 1. **HashSet Internally HashMap ka Use karta hai**
+- Jab tum likhte ho:
+  set.add("Tokyo");
+
+  Toh ye element `"Tokyo"` actually `HashMap` ke key ki tarah store hota hai.
+- `HashSet` ke andar ek **dummy value** bhi store hoti hai, usually koi constant jaise `"PRESENT"`.
+
+  Internally:
+  map.put("Tokyo", PRESENT);
+
+
+---
+
+### ✅ 2. **Hashing aur Buckets**
+- Har element ka ek `hashCode()` banta hai, jo ek integer hota hai.
+- Ye hashCode decide karta hai ki element ko kis bucket (index) mein store kiya jaayega.
+
+  🧠 Socho buckets ek array ke boxes hain — har element ek particular box mein jaata hai.
+
+  Example:
+  `"Tokyo".hashCode()` → 233421
+  Phir usko kisi bucket mein map kiya jaata hai: `bucket = hashCode % capacity`
+
+---
+
+### ✅ 3. **Collision Hona**
+- Kabhi kabhi do alag values ka `hashCode()` same bucket ko point kar deta hai.
+  Is situation ko **collision** kehte hain.
+
+- Java is collision ko handle karta hai:
+  - **Java 7** mein: Linked List use hoti thi.
+  - **Java 8+** mein: Agar ek bucket mein zyada elements ho jaayein toh **Red-Black Tree** use hota hai.
+
+  🔴⚫ Red-Black Tree ek self-balancing Binary Search Tree (BST) hoti hai.
+  ✔️ Ye har insertion ke baad khud ko balance karti hai taaki searching, insertion, deletion operations O(log n) time mein ho sake.
+  ✔️ Java 8+ mein jab ek bucket mein 8 se zyada elements ho jaate hain, toh LinkedList ki jagah Red-Black Tree use hota hai — taaki performance degrade na ho.
+
+---
+
+### ✅ 4. **Duplicate Value Add Nahi Hoti Kyun?**
+- Jab tum koi naya element add karte ho:
+  1. Pehle uska `hashCode()` nikala jaata hai.
+  2. Fir check hota hai ki us bucket mein koi element pehle se toh nahi hai.
+     - Agar hai, toh `equals()` method use karke compare kiya jaata hai.
+- Agar `equals()` return kare `true` → **Duplicate hai** → Add nahi hoga.
+- Agar `false` → Naya value hai → Add ho jaayega.
+
+---
+
+### ✅ 5. **Time Complexity**
+- HashSet mein operations jaise:
+  - `add()`
+  - `contains()`
+  - `remove()`
+
+  Yeh sab average case mein O(1) time lete hain — matlab super fast!
+
+  ⚠️ Kabhi kabhi (collision ke time) ye O(n) bhi ho sakta hai, but rarely.
+
+---
+
+### 🧠 Example:
+
+```java
+Set<String> set = new HashSet<>();
+set.add("Tokyo");  // hashCode → bucket 3
+set.add("Osaka");  // hashCode → bucket 7
+set.add("Tokyo");  // same bucket 3, equals() true → duplicate → not added
+```
+
+---
+
+### 📌 Important Points Summary Table
+--------------------------------------------------------------------
+| Feature              | Description                               |
+|----------------------|-------------------------------------------|
+| ❌ Duplicate Allowed? | Nahi                                     |
+| ✅ Fast Operations    | Haan (O(1))                              |
+| ❌ Insertion Order?   | Maintain nahi hoti                       |
+| ✅ null Allowed?      | Sirf ek `null`                           |
+| ❌ Thread-Safe?       | Nahi (synchronize manually karna padega) |
+ ------------------------------------------------------------------
+---
