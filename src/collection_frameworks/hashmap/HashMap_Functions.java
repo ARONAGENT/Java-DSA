@@ -27,6 +27,11 @@ public class HashMap_Functions {
         hashMap.put("hrutvik", "software engg");
         hashMap.putIfAbsent("yash","max devloper");
 
+        //null keys and values are allowed in hashmap
+        hashMap.put(null,"developer");
+        hashMap.put("Sarthak",null);
+
+        System.out.println(hashMap);
         // Check if a specific key exists
         System.out.println("Contains key 'rahul'? " + hashMap.containsKey("rahul")); // true
 

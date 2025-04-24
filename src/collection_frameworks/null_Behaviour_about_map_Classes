@@ -1,0 +1,30 @@
+HashMap
+✅ Null Key: Allows one null key (used as a special case).
+✅ Null Values: Allows multiple null values.
+🔍 Internally handles null key by placing it in a special bucket (index 0).
+
+🔸 LinkedHashMap
+✅ Null Key: Allows one null key (just like HashMap).
+✅ Null Values: Allows multiple null values.
+📌 Maintains insertion order.
+
+🔸 Hashtable
+❌ Null Key: Not allowed. Adding a null key will throw NullPointerException.
+❌ Null Values: Not allowed. Adding a null value also throws NullPointerException.
+🔐 Synchronized and thread-safe.
+
+🔸 TreeMap
+❌ Null Key: Not allowed, as it uses natural ordering (Comparable) or custom Comparator, which can't compare null.
+✅ Null Values: Allowed.
+🌲 Maintains sorted (ascending) order by keys using Red-Black Tree.
+
+Table ->
+   |--------------|-----------------|------------------|
+   | Map Type	  |   Null Key	    |  Null Value      |
+   | -------------|-----------------|------------------|
+   | HashMap	  | ✅ One allowed  |	✅ Allowed     |
+   | LinkedHashMap|	✅One allowed   |	✅ Allowed     |
+   | Hashtable	  | ❌ Not allowed  |	❌ Not allowed |
+   | TreeMap	  | ❌ Not allowed  |	✅ Allowed     |
+   |--------------|-----------------|------------------|
+

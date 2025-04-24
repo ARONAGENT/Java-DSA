@@ -41,6 +41,11 @@ public class Hashtable_Functions {
         hashtable.put(4, "Ruturaj");
         hashtable.put(67, "Aron");
 
+        // no null keys and values are allowed in hashtable
+        hashtable.put(null,"parag");
+        hashtable.put(7,null);
+        System.out.println(hashtable);
+
         // Checking if key '3' exists
         System.out.println(hashtable.containsKey(3)); // true
 

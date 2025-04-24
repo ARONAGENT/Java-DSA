@@ -25,6 +25,12 @@ public class LinkedHashMap_Functions {
         linkedHashMap.put("om", "tester");
         linkedHashMap.put("hrutvik", "software engg");
 
+        // null key and null value allowed in LinkHashMap
+        linkedHashMap.put(null,"eron");
+//        linkedHashMap.put(null,"aron");
+        linkedHashMap.put("Rushi",null);
+        System.out.println(linkedHashMap);
+
         // ✅ Check if a key exists
         System.out.println(linkedHashMap.containsKey("rahul")); // true
 

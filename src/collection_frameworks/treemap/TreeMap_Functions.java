@@ -31,6 +31,9 @@ public class TreeMap_Functions {
         treeMap.put("hrutvik", "software engg");
         treeMap.putIfAbsent("yash", "max developer");
 
+        // In treemap null keys are not allowed but null values are allowed
+        // treeMap.put(null,"gamer"); // ❌ This will throw NullPointerException
+        treeMap.put("Vijay", null); // ✅ Null value allowed
 
         System.out.println("\nTreeMap in ascending order:");
         System.out.println(treeMap);
