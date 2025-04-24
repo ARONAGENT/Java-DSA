@@ -1,0 +1,99 @@
+### 🌳 What is TreeSet?
+
+`TreeSet` is a class in Java that implements the `NavigableSet` interface and extends `AbstractSet`.
+It is a part of the Java Collections Framework and stores **unique elements** in **sorted (ascending) order**.
+
+---
+
+### ✅ Key Features of TreeSet
+-----------------------------------------------------------------------------------------------------------
+| Property                       |               Description                                               |                                 |
+|--------------------------------|-------------------------------------------------------------------------|
+| 🔁 **Unique Elements Only**    | No duplicates allowed (like any `Set`).                                 |
+| 🧮 **Sorted Order**            | Maintains elements in ascending (natural) order.                        |
+| ⚙️ **Tree-based Structure**    | Internally backed by a Red-Black Tree via `TreeMap`.                    |
+| 📐 **Logarithmic Time**        | O(log n) time for insertion, deletion, search.                          |
+| ❌ **Thread-Safety**           | Not thread-safe (requires external synchronization).                    |
+| 🚫 **No Null Allowed**         | `NullPointerException` if null is added (Java 8+).                      |
+| 📚 **Implements NavigableSet** | Supports extra methods like `lower()`, `higher()`, `ceiling()`, etc.    |
+------------------------------------------------------------------------------------------------------------
+---
+
+### 🧠 How TreeSet Works Internally
+
+#### 🔹 Backed by TreeMap
+- Internally uses a `TreeMap` where:
+  - Each element is stored as a key.
+  - Values are dummy constants.
+
+#### 🔹 Red-Black Tree Data Structure
+- TreeSet relies on a self-balancing **Red-Black Tree**.
+- A special type of Binary Search Tree (BST) that guarantees balance after every insertion and deletion.
+- Ensures **O(log n)** time for operations.
+
+#### 🔹 Sorting Mechanism
+- Default: **Natural Ordering** via `Comparable` (e.g., alphabetically for Strings, ascending for numbers).
+- Custom Sorting: Can be done using a user-defined `Comparator`.
+
+#### 🔹 Insertion Logic
+- Uses `compareTo()` or `Comparator.compare()` for sorting.
+- If `compareTo()` returns 0, the element is considered a duplicate and won’t be inserted.
+
+---
+
+### 💡 TreeSet & Null
+- **Not allowed** in Java 8+.
+- `add(null)` throws `NullPointerException` since `compareTo()` can't compare null with other values.
+
+---
+
+### 🧭 Methods Provided by NavigableSet
+Some useful methods TreeSet provides:
+- `first()` / `last()`
+- `ceiling(E e)` → Returns least element ≥ e
+- `floor(E e)` → Returns greatest element ≤ e
+- `lower(E e)` → Strictly less than
+- `higher(E e)` → Strictly greater than
+- `pollFirst()` / `pollLast()` → Removes and returns first/last element
+
+---
+
+### ⚙️ Custom Sorting Example
+
+```java
+TreeSet<Integer> ts = new TreeSet<>(Comparator.reverseOrder());
+ts.add(10);
+ts.add(5);
+ts.add(20);
+System.out.println(ts); // [20, 10, 5]
+```
+
+---
+
+### 📊 TreeSet vs HashSet vs LinkedHashSet
+------------------------------------------------------------------------------------------------------------------------
+| Feature                      | HashSet              | LinkedHashSet                   | TreeSet                      |
+|------------------------------|----------------------|---------------------------------|------------------------------|
+| **Ordering**                 | No                   | Yes (insertion order)           | Yes (sorted order)           |
+| **Duplicates**               | Not allowed          | Not allowed                     | Not allowed                  |
+| **Null allowed**             | Yes (1 null)         | Yes (1 null)                    | ❌ No                        |
+| **Thread-safe**              | ❌                   | ❌                              | ❌                           |
+| **Performance (Add/Search)** | O(1)                 | O(1)                            | O(log n)                     |
+| **Data Structure**           | Hash Table           | Hash Table + Doubly Linked List | Red-Black Tree (via TreeMap) |
+| **Use Case**                 | Fast, unordered sets | Maintain order of insertion     | Sorted, navigable sets       |
+------------------------------------------------------------------------------------------------------------------------
+---
+
+### 🚀 When to Use TreeSet?
+✅ When you need:
+- Sorted data (alphabetically, numerically, or custom).
+- Fast access and navigation (like finding closest smaller/larger elements).
+- Unique collection of elements with automatic ordering.
+
+---
+
+### ⚠️ Limitations of TreeSet
+- ❌ Slower than `HashSet`/`LinkedHashSet` (due to tree re balancing).
+- ❌ No support for `null` elements.
+- ❌ Not thread-safe — must wrap using `Collections.synchronizedSortedSet()` if needed.
+- ❌ Higher memory usage compared to `HashSet`.
