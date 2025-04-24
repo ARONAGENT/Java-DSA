@@ -1,0 +1,29 @@
+What is A HashMap ?
+A HashMap is a Part of the Java Collections Framework that implements the Map interface.
+It is used to store key-value pairs, where keys are unique and values can be duplicated.
+The data inside a HashMap is stored using a hashing mechanism, making retrieval operations extremely fast.
+
+What are the key features of HashMap?
+✅ Unordered Storage – Does not maintain any specific order.
+✅ Allows One null Key – But multiple null values are allowed.
+✅ Fast Performance (O(1)) – Provides constant-time lookup and insertion in most cases.
+✅ Not Thread-Safe – Multiple threads can cause concurrency issues unless synchronized.
+
+Explain the internal working of HashMap.
+A HashMap stores data using a hash table and a bucket system. When you add a key-value pair:
+1. The key’s hashCode() is computed.
+2. The hash value determines the bucket in which the entry is stored.
+3. If two keys have the same hash (collision occurs), the elements are stored in a linked list (or balanced tree in Java 8+ if more than 8 entries exist in a bucket).
+4. On retrieval, the hash value is calculated again to locate the bucket.
+
+HashMap: Points to remember
+● HashMap class implements the Map interface which allows us to store key and value pair, where keys should be unique.
+● If you try to insert the duplicate key, it will replace the element of the corresponding key.
+● It is easy to perform operations using the key index like updation, deletion, etc.
+● HashMap in Java is like the legacy Hashtable class, but it is not synchronized.
+● HashMap contains values based on the key.
+● HashMap contains only unique keys.
+● HashMap may have one null key and multiple null values.
+● HashMap is non synchronized.
+● HashMap maintains no order.
+● The initial default capacity of Java HashMap class is 16 with a load factor of 0.75.
