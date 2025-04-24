@@ -1,0 +1,70 @@
+### ✅ **LinkedHashSet in Java – Detailed Theory**
+
+**Definition**
+`LinkedHashSet` is a class in the Java Collections Framework that implements the `Set` interface and extends the `HashSet` class.
+It stores unique elements **while maintaining the insertion order**.
+
+---
+
+### 🔍 **Key Properties of LinkedHashSet**
+-----------------------------------------------------------------------------------------------------------------------------------------
+| Property                         | Description                                                                                        |
+|----------------------------------|----------------------------------------------------------------------------------------------------|
+| ✅ **Maintains Insertion Order** | Unlike HashSet, it maintains the order in which elements were inserted.                            |
+| ✅ **No Duplicate Elements**     | Like all sets, it does not allow duplicate entries.                                                |
+| ✅ **Allows One Null Element**   | A single `null` value is permitted.                                                                |
+| ❌ **Not Thread-Safe**           | Needs external synchronization for concurrent use.                                                 |
+| ✅ **Fast Operations**           | Uses hashing for constant time performance (O(1)) for basic operations like add, remove, contains. |
+| ❗ **Extra Memory Usage**        | Slightly more memory consumption than `HashSet` due to order-maintaining pointers.                 |
+-----------------------------------------------------------------------------------------------------------------------------------------
+---
+
+### 🛠️ **Internal Working of LinkedHashSet**
+
+1. **Uses `LinkedHashMap` Internally**
+   - Each element is stored as a key in a `LinkedHashMap`.
+   - A dummy constant is used as the value for all keys.
+   - Keys in a map are unique → ensures **no duplicates**.
+
+2. **Maintains Insertion Order via Doubly Linked List**
+   - Each entry in `LinkedHashMap` maintains:
+     - A `before` pointer (previous entry)
+     - An `after` pointer (next entry)
+   - These pointers form a **doubly linked list** that preserves insertion order.
+
+3. **Hashing Mechanism for Fast Lookup**
+   - When an element is added, its `hashCode()` is used to find the appropriate bucket (index).
+   - If there's a collision (multiple elements with the same hash code):
+     - Java 7 → Resolves using a linked list.
+     - Java 8+ → Uses a balanced binary tree for better performance in worst-case.
+
+---
+
+### 🧠 **When to Use LinkedHashSet?**
+
+- ✅ Need fast lookups like `HashSet`
+- ✅ Want to **preserve insertion order**
+- ✅ Need to **remove duplicates but maintain order**
+- ✅ For caches, ordered sets, or display where order matters
+
+---
+
+### ⚠️ **Limitations**
+
+- ❌ **Slower than `HashSet`** because of maintaining order
+- ❌ **Not thread-safe** (use `Collections.synchronizedSet()` if needed)
+- ❌ **More memory usage** due to doubly linked list
+
+---
+
+### 📝 **Important Points to Remember**
+
+- Implements Set interface
+- Inherits from `HashSet`
+- Internally uses **`LinkedHashMap`**
+- Maintains a **doubly linked list** to track element order
+- Default capacity: **16**, Load factor: **0.75**
+- Offers O(1) performance for basic operations (like HashSet)
+- Stores **only unique elements**
+- Allows a **single null value**
+
