@@ -1,0 +1,44 @@
+What is a LinkedHashMap?
+LinkedHashMap is a part of the Java Collections Framework that extends HashMap while maintaining insertion order.
+It stores key-value pairs like HashMap, but it also maintains a linked list of entries to preserve the order
+in which keys are inserted.
+What are the Key Characteristics of LinkedHashMap?
+✅ Maintains Insertion Order – Unlike HashMap, it remembers the order in which elements were added.
+✅ Faster Access (O(1)) – Similar performance to HashMap.
+✅ Allows null Keys and Values – Just like HashMap, it allows one null key and multiple null values.
+✅ Not Thread-Safe – Needs external synchronization for multi-threaded access.
+✅ Provides Access Order Mode – Can be configured to maintain access order (useful for LRU caches).
+
+
+How is the Internal Working of LinkedHashMap?
+● Uses a combination of a Hash Table and a Doubly Linked List.
+● Each entry contains pointers to previous and next elements, forming a linked list.
+● When an entry is added, it is linked to the previous entry in insertion order.
+● Access Order Mode (accessOrder = true) allows the most recently accessed elements to move to the end (used for implementing LRU caches).
+
+When to Use LinkedHashMap?
+✔ When insertion order matters
+✔ When you need an LRU cache implementation
+❌ Avoid if ordering is not needed (use HashMap instead for better performance).
+
+What is LRU?
+LRU (Least Recently Used) Cache is a caching algorithm that removes the least recently used items when the cache reaches its capacity.
+✔ Efficiently manages memory usage
+✔ Ensures frequently used items stay in cache
+✔ Used in databases, operating systems, and web caching
+
+How Does LRU Work?
+● The cache has a fixed size.
+● When a new item is accessed, it is moved to the most recently used position.
+● If an item is accessed again, it moves to the front.
+● When the cache is full, the least recently used item (at the back) is removed to make space for a new entry.
+🔹 Think of it like a queue where the most recently used elements stay in front!
+What are the Real-World Examples of LRU?
+🔹 Web Browsers (Chrome, Firefox, Edge, etc.)
+● The browser caches recently visited web pages.
+● If cache memory is full, older pages (least accessed) are removed first.
+🔹 Operating Systems
+● OS manages memory using LRU in page replacement algorithms.
+● When RAM is full, the least used pages are swapped out.
+🔹 Database Systems
+● Databases use LRU for query caching to optimize repeated queries.
