@@ -1,0 +1,130 @@
+### ✅ What is `HashSet`?
+
+`HashSet` is a class in **Java's Collection Framework** that implements the **Set** interface.
+ It is backed by a **hash table (HashMap internally)** and is designed to store **unique elements only**,
+ without maintaining any order of insertion.
+
+---
+
+### ✅ Key Properties of `HashSet`
+-----------------------------------------------------------------------------------------------------------------------------------------------
+| Property                         | Description                                                                                              |
+|----------------------------------|----------------------------------------------------------------------------------------------------------|
+| **Uniqueness**                   | Only stores **unique** elements (no duplicates).                                                         |
+| **Null Handling**                | Allows **one null** element only.                                                                        |
+| **Unordered**                    | Does **not maintain** insertion order; it depends on hashcode.                                           |
+| **Backed by HashMap**            | Internally uses a `HashMap` to store elements.                                                           |
+| **Performance**                  | Offers **constant time** performance for basic operations like add, remove, contains.                    |
+| **Not Thread-Safe**              | It's **not synchronized**; use `Collections.synchronizedSet()` or `ConcurrentHashMap` for thread safety. |
+| **Initial Capacity & Load Factor*| Default **capacity is 16**, and **load factor is 0.75**.                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------
+---
+In Simpler Words
+✅ No Duplicate Elements – Ensures data uniqueness.
+✅ Uses Hashing Mechanism – Provides fast lookups.
+✅ Unordered Collection – No guarantee of insertion order.
+✅ Allows null Values – But only one null is permitted.
+✅ Not Thread-Safe – Needs explicit synchronization in multi-threaded environments.
+
+
+HashSet: Points to remember
+● HashSet class is used to create a collection that uses a hash table for storage
+● HashSet stores the elements by using a mechanism called hashing.
+● HashSet contains unique elements only.
+● HashSet allows null value.
+● HashSet class is non synchronized.
+● HashSet doesn't maintain the insertion order.
+● elements are inserted on the basis of their hashcode.
+● HashSet is the best approach for search operations.
+● The initial default capacity of HashSet is 16, and the load factor is 0.75.
+● A list can contain duplicate elements whereas Set contains unique elements only.
+
+### ✅ Internal Working
+
+- `HashSet` uses **hashing** to store elements.
+- When an element is added, its **hashCode** is calculated.
+- This hashCode determines the **bucket (index)** where the element will be stored.
+- **Collision handling** is done using chaining (linked list or tree after Java 8).
+- If two elements have the same hashCode, `equals()` method is used to decide uniqueness.
+
+
+----
+How Does HashSet Work Internally?
+Uses HashMap<K, V> internally
+● When an element is added, it is stored as a key in the HashMap.
+● The value is always a constant dummy object (PRESENT).
+Computes Hash Code of Element
+● When an element is inserted, its hash code is calculated using hashCode().
+Finds the Bucket (Index) in the Hash Table
+● The hash code is mapped to an index in the internal array (buckets).
+Handles Collisions Using Linked List (Chaining) or Tree (After Java 8)
+● If multiple elements have the same hash index, they are stored using Linked List (before Java 8).
+● After Java 8, if there are more than 8 elements in the same bucket, it converts to a Red-Black tree for faster lookup (O(log n)).
+Ensures Uniqueness Using equals()
+● If two objects have the same hash, equals() is checked to prevent duplicates.
+Resizes the Hash Table When Full
+● When the load factor (0.75 default) is exceeded, the HashSet doubles its size.
+🔹 Note: The order of elements is not fixed because HashSet does not maintain insertion order
+---
+#When to Use Hashset ?
+✅ Fast Membership Checking: Quickly check if an element exists.
+✅ Remove Duplicates: Store only unique elements.
+✅ Unordered Data Storage: When order doesn't matter.
+✅ High-Performance Data Structure: Ideal for large datasets.
+---------------
+
+
+What are the limitations of HashSet?
+❌ Unordered Collection – Cannot maintain insertion order (use LinkedHashSet instead).
+❌ Not Thread-Safe – Requires Collections.synchronizedSet() for multi-threading.
+❌ High Memory Usage – Stores elements inside a HashMap, which has additional memory overhead.
+What is the load factor of HashSet?
+Default initial capacity = 16
+Load factor = 0.75 (Triggers resizing when 75% full).
+When resizing occurs:
+● Capacity Doubles (newCapacity = oldCapacity * 2).
+● Rehashing Happens (Recomputes indexes for all elements)
+
+-----------
+### ✅ Why HashSet is Fast for Search?
+
+Because:
+- Hashing allows **direct access** to buckets (via hashcode).
+- No need to traverse every element (like in a list or array).
+- Average time complexity:
+  - `add()` → O(1)
+  - `contains()` → O(1)
+  - `remove()` → O(1)
+  - Worst case (hash collisions) → O(n)
+
+---
+
+### ✅ Differences from Other Collections
+
+| Feature             | HashSet       | ArrayList     | LinkedList     | TreeSet          |
+|--------------------|---------------|---------------|----------------|------------------|
+| Order              | No            | Yes (insertion order) | Yes (insertion order) | Yes (sorted) |
+| Duplicates         | Not allowed   | Allowed       | Allowed        | Not allowed      |
+| Performance        | Fastest for search | Slower for search | Slower| Slower (O(log n)) |
+| Nulls              | One null      | Multiple nulls| Multiple nulls | One null (but not recommended) |
+| Thread-safe        | No            | No            | No             | No               |
+
+---
+
+### ✅ Use Cases
+
+- Removing duplicates from a collection.
+- Storing unique items (like IDs, usernames, keys).
+- Performing set operations (union, intersection, difference).
+
+---
+
+### 🔁 Summary
+
+- Use `HashSet` when:
+  - You need to **ensure uniqueness**.
+  - Order of elements **doesn’t matter**.
+  - You want **fast search operations**.
+- Avoid when:
+  - You need to **preserve order** (`LinkedHashSet`).
+  - You want **natural sorting** (`TreeSet`).
