@@ -1,0 +1,28 @@
+#TreeMap
+What is a TreeMap?
+TreeMap is a part of Java’s Collections Framework that implements the NavigableMap interface and extends AbstractMap.
+It stores key-value pairs in a sorted order based on the natural ordering of keys or a custom comparator
+
+What are the features of TreeMap?
+✔ Sorted Order → Maintains keys in ascending order (by default).
+✔ Efficient Search → Uses a Red-Black Tree for operations.
+✔ No null Keys → Unlike HashMap, TreeMap does not allow null keys.
+✔ Fast Lookup & Update → O(log n) time complexity for put(), get(), and remove().
+
+Explain Internal Working of TreeMap
+TreeMap is implemented using a Self-Balancing Red-Black Tree, where:
+● Keys are sorted as per natural order or a custom comparator.
+● Operations like put(), get(), and remove() take O(log n) time.
+● The tree is rebalanced automatically to maintain performance.
+
+Give some Real-World Applications of TreeMap
+✅ Maintaining Ordered Data → Storing user data in sorted order (e.g., IDs, timestamps).
+✅ Range Queries → Used in financial applications (e.g., stock price tracking).
+✅ NavigableMap Operations → Useful when we need access to nearest higher/lower keys.
+
+When to Use TreeMap?
+✔ When you need sorted data retrieval.
+✔ When fast range queries (subMap, tailMap, etc.) are required.
+❌ Avoid if ordering is not required (use HashMap for better performance).
+
+
