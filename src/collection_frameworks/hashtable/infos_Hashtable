@@ -1,0 +1,50 @@
+What is a Map interface?
+The Map interface in Java is a part of the Java Collections Framework and is used for storing key-value pairs.
+Unlike other collections such as List or Set, which store only values, Map allows you to associate a unique key with each value
+
+What are the key features of Map interface?
+✅ Stores Key-Value Pairs – Each key is mapped to a single value.
+✅ Unique Keys – A Map does not allow duplicate keys, but values can be duplicated.
+✅ Efficient Lookups – You can retrieve values in O(1) (HashMap) or O(log n) (TreeMap) time.
+✅ Implements No Direct Collection Interface – Map is separate from Collection but part of the framework.
+
+
+What is a HashTable?
+A Hashtable is a part of Java's legacy collection framework that implements the Map interface.
+It is used to store key-value pairs, similar to HashMap, but with an important difference:
+
+Hashtable ->
+
+What are the Key Characteristics of Hashtable?
+✅ Thread-Safe & Synchronized – Can be shared between multiple threads without external synchronization.
+✅ No null Keys or Values – Unlike HashMap, Hashtable does not accept null keys or null values.
+✅ Unordered Storage – Does not maintain insertion order or sorting.
+✅ Performance Slower than HashMap – Synchronization adds overhead, making Hashtable slower than HashMap.
+
+
+Internal Working of Hashtable
+● Similar to HashMap, Hashtable uses hashing to store key-value pairs.
+● It computes the hash of a key and places the entry in a bucket based on this hash value.
+● If multiple keys produce the same hash (collision), it stores them in a linked list within the same bucket.
+● Since Hashtable is synchronized, multiple threads can access it safely, but this adds overhead.
+
+
+When to Use a Hashtable?
+✔ When multiple threads need to access a map safely.
+✔ When synchronization is required and you don’t want to use ConcurrentHashMap.
+❌ Avoid if you need better performance – Use ConcurrentHashMap instead.
+
+
+Hashtable: Points to remember
+● Hashtable class implements a hashtable, which maps keys to values.
+● It inherits Dictionary class and implements the Map interface.
+● A Hashtable is an array of a list. Each list is known as a bucket.
+● The position of the bucket is identifi ed by calling the hashcode() method.
+● A Hashtable contains values based on the key.
+● Java Hashtable class contains unique elements.
+● Java Hashtable class doesn't allow null key or value.
+● Java Hashtable class is synchronized.
+● The initial default capacity of Hashtable class is 11 whereas loadFactor is 0.75.
+● Legacy class
+● If thread safety is not required better to use HashMap
+● If thread safety is required use ConcurrentHashMap
