@@ -1,0 +1,71 @@
+✅ Fail-Safe (Thread Safe / Concurrent)
+🔹 Definition
+Fail-Safe iterators don’t throw any exceptions if the collection is modified during iteration.
+They work on a copy of the collection or are designed to handle concurrency.
+
+| Class Name               | Type         |
+|--------------------------|--------------|
+| `CopyOnWriteArrayList`   | Fail-Safe    |
+| `CopyOnWriteArraySet`    | Fail-Safe    |
+| `ConcurrentHashMap`      | Fail-Safe    |
+| `ConcurrentLinkedQueue`  | Fail-Safe    |
+
+🛡️ **How?**
+They work on **a separate copy** or allow **safe concurrent modification**.
+
+🔹 How it works
+Iteration happens over a cloned copy (snapshot) or uses concurrent mechanisms.
+Original collection can be modified safely.
+No risk of ConcurrentModificationException.
+
+🔹 Collections that are Fail-Safe
+CopyOnWriteArrayList, CopyOnWriteArraySet
+ConcurrentHashMap, ConcurrentLinkedQueue
+
+🔹 Limitations
+Extra memory is used (in case of snapshot-based collections).
+May not reflect recent changes during iteration (because of snapshot).
+---
+
+🔴 Fail-Fast (Not Thread Safe)
+🔹 Definition
+Fail-Fast iterators immediately throw ConcurrentModificationException
+if the collection is structurally modified after the iterator is created (except via iterator's own methods).
+
+| Class Name              | Type        |
+|-------------------------|-------------|
+| `ArrayList`             | Fail-Fast   |
+| `LinkedList`            | Fail-Fast   |
+| `HashMap`               | Fail-Fast   |
+| `HashSet`               | Fail-Fast   |
+| `TreeMap`               | Fail-Fast   |
+| `Vector`                | Fail-Fast   |
+| `Stack`                 | Fail-Fast   |
+
+🔹 Collections that are Fail-Fast
+ArrayList, LinkedList
+HashSet, TreeSet
+HashMap, TreeMap, Vector, Stack
+
+🔹 Limitations
+Not safe in multi-threaded environments.
+Can't modify the collection while iterating unless you use iterator methods like remove().
+
+⚠️ **Why?**
+They use a **modCount** variable to detect structural changes during iteration.
+
+
+🔹 How it works
+Most collections (like ArrayList, HashSet, HashMap, etc.) maintain a modCount variable.
+When a collection is modified (add/remove), modCount is updated.
+The iterator checks if modCount has changed since its creation.
+If yes → Exception is thrown.
+
+🔁 Summary Table:
+
+Feature     	                Fail-Fast	                  Fail-Safe
+Throws Exception?	Yes (ConcurrentModificationException)	    No
+Works on Copy?	                No	                        Yes / Concurrent structure
+Thread Safe?	                No	                            Yes
+Examples	            ArrayList, HashMap, HashSet	         ConcurrentHashMap, CopyOnWriteArrayList
+
