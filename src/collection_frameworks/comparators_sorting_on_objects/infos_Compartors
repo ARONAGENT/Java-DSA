@@ -1,0 +1,39 @@
+### 📘 What is a Comparator in Java?
+
+A **Comparator** in Java is an interface used to **define custom sorting logic** for objects.
+It is part of the `java.util` package and allows you to sort objects in **multiple ways**, outside their natural ordering.
+
+---
+
+### 🔹 Key Points:
+- A class that implements `Comparator<T>` must override the method:
+  ```java
+  int compare(T o1, T o2);
+  ```
+  - Returns:
+    - Negative → if `o1 < o2`
+    - Zero → if `o1 == o2`
+    - Positive → if `o1 > o2`
+- It is useful when:
+  - You don’t want to or cannot modify the class to implement `Comparable`.
+  - You want to define **multiple sorting logics** for the same class (e.g., by name, by rating, by year).
+
+---
+
+### 🔧 Example Use Case:
+
+You have a `Film` class and want to sort it:
+- By **film name** → `FilmName_Comparator`
+- By **release year** → `RelYr_Comparator`
+- By **IMDb rating** → `ImdbRating_Comparator`
+
+Each of these comparators implements the `Comparator<Film>` interface and defines its own `compare()` logic.
+
+---
+
+### ✅ Advantages of Comparator:
+- Enables sorting on **multiple fields** without changing the original class.
+- Keeps your sorting logic **separate and reusable**.
+- Works well with `Collections.sort()` or `List.sort()`.
+
+--
