@@ -1,0 +1,100 @@
+## 🔹 What is a Functional Interface?
+
+A **Functional Interface** is an interface in Java that **contains exactly one abstract method**.
+Functional interfaces are the **core concept behind Lambda Expressions** in Java 8 and onward.
+
+---
+types of functional interface ->
+1.Supplier -> a function doesn't takes a input but return something -> method = get();
+2.Consumer -> a function takes a input as a parameter but returns nothings -> method -> accept(...);
+3.Functions -> a function takes a input as a parameter and return somethings -> method -> apply(....);
+4.Predicate -> a function takes a input as a parameter but returns a only boolean value -> method = test(...);
+
+## 🔹 Why Functional Interface?
+
+Before Java 8, if you wanted to pass behavior (like a method) as a parameter, you had to use anonymous classes.
+This was bulky and hard to read.
+Java 8 introduced **Lambda Expressions** and **Functional Interfaces** to allow cleaner and more readable code.
+
+---
+
+## 🔹 Syntax Example
+
+```java
+@FunctionalInterface
+interface Banking {
+    String calInterest(double balance);
+}
+```
+
+> ✅ The `@FunctionalInterface` annotation is optional but recommended.
+> It tells the compiler that this interface is supposed to have exactly **one abstract method**,
+and gives an error if more are added.
+
+---
+
+## 🔹 Key Characteristics
+
+| Feature                                 | Description                                                                 |
+|---------------------------------------- |-----------------------------------------------------------------------------|
+| Exactly one abstract method             | Core requirement for a functional interface                                 |
+| Can have `default` and `static` methods | These don’t affect the functional nature                                    |
+| Can extend other functional interfaces  | As long as the total abstract methods = 1                                   |
+| Lambda-friendly                         | Can be used as the target for lambda expressions                            |
+| Annotated with `@FunctionalInterface`   | Optional, but helps enforce correct structure                               |
+
+---
+
+## 🔹 Common Java Functional Interfaces (java.util.function package)
+
+Java already provides many ready-made functional interfaces:
+
+| Interface        | Abstract Method       | Description                              |
+|------------------|-----------------------|------------------------------------------|
+| `Runnable`       | `run()`               | Represents a task with no input/output   |
+| `Callable<T>`    | `call()`              | Task that returns a result               |
+| `Supplier<T>`    | `T get()`             | Supplies a value                         |
+| `Consumer<T>`    | `void accept(T t)`    | Consumes a value                         |
+| `Function<T,R>`  | `R apply(T t)`        | Transforms T to R                        |
+| `Predicate<T>`   | `boolean test(T t)`   | Tests a condition                        |
+
+---
+
+## 🔹 Functional Interface with Anonymous Class vs Lambda
+
+### ✅ Anonymous Class
+```java
+Banking b = new Banking() {
+    @Override
+    public String calInterest(double balance) {
+        return "Interest: " + (balance * 0.07);
+    }
+};
+```
+
+### ✅ Lambda (cleaner)
+```java
+Banking b = (balance) -> "Interest: " + (balance * 0.07);
+```
+
+> Same output, much cleaner syntax with lambda expression.
+
+---
+
+## 🔹 When to Use Functional Interfaces?
+
+- When passing logic as a parameter (strategy pattern).
+- While using streams (`filter`, `map`, `reduce`).
+- For lambda expressions or method references.
+- While building APIs or libraries that accept callbacks.
+
+---
+
+## 🔹 Final Thoughts
+
+- Functional interfaces make Java closer to functional programming.
+- They enable writing more concise and readable code using lambdas.
+- You can define your own functional interfaces or use Java's built-in ones.
+- Always use `@FunctionalInterface` for safety and readability.
+
+---
