@@ -1,0 +1,95 @@
+## 📘 Java Streams – Complete Theory
+
+### ✅ What is Java Stream API?
+
+Java Stream API, introduced in **Java 8**, provides a **functional-style way** to process **collections of data** (like `List`, `Set`, etc.).
+Instead of using loops and conditionals, Stream API allows you to **process data declaratively** using a **pipeline** of operations.
+A **Stream** represents a **sequence of elements** supporting **sequential and parallel operations**.
+
+---
+
+### 🔄 Stream Pipeline
+
+A typical stream pipeline consists of:
+
+1. **Source**: Collection, array, or I/O channel
+2. **Intermediate Operations**: Transform the stream into another stream
+3. **Terminal Operation**: Produces a result or a side-effect
+
+```java
+List<String> names = List.of("Ram", "Shyam", "John");
+names.stream()
+     .filter(name -> name.length() > 3) // intermediate
+     .map(String::toUpperCase)         // intermediate
+     .forEach(System.out::println);    // terminal
+```
+
+---
+
+## 🔹 Intermediate Operations
+
+These operations **return another stream**, so they are used to **build a processing pipeline**. They are **lazy**, meaning the computation is not performed until a terminal operation is invoked.
+
+### Common Intermediate Operations:
+
+| Method        | Description |
+|---------------|-------------|
+| `filter()`     | Select elements matching a condition |
+| `map()`        | Transform each element |
+| `flatMap()`    | Flatten nested structures |
+| `sorted()`     | Sort elements |
+| `distinct()`   | Remove duplicates |
+| `limit(n)`     | Take first n elements |
+| `skip(n)`      | Skip first n elements |
+| `peek()`       | View elements for debugging |
+| `takeWhile()` *(Java 9+)* | Take while condition is true |
+| `dropWhile()` *(Java 9+)* | Drop while condition is true |
+
+Example:
+```java
+List<Integer> list = List.of(1, 2, 3, 4, 5);
+list.stream()
+    .filter(n -> n % 2 == 0)
+    .map(n -> n * 10)
+    .collect(Collectors.toList()); // Terminal
+```
+
+---
+
+## 🔸 Terminal Operations
+
+These operations **end the stream pipeline** and **produce a result** (like a collection, value, or side-effect). Once a terminal operation is applied, the stream can’t be used again.
+
+### Common Terminal Operations:
+
+| Method        | Description |
+|---------------|-------------|
+| `forEach()`    | Performs an action for each element |
+| `collect()`    | Collects stream into a collection or result |
+| `reduce()`     | Reduces elements to a single value |
+| `count()`      | Counts number of elements |
+| `min()`, `max()` | Finds min or max using comparator |
+| `anyMatch()`   | Returns true if any element matches predicate |
+| `allMatch()`   | True if all elements match predicate |
+| `noneMatch()`  | True if no element matches predicate |
+| `findFirst()`  | Returns the first element (optional) |
+| `findAny()`    | Returns any element (useful in parallel streams) |
+
+Example:
+```java
+int sum = list.stream()
+              .filter(n -> n > 2)
+              .reduce(0, Integer::sum); // Terminal operation
+```
+
+---
+
+## 🧠 Summary
+
+| Aspect               | Intermediate Operation         | Terminal Operation              |
+|----------------------|--------------------------------|---------------------------------|
+| Return type          | Stream                         | Final result or void            |
+| Laziness             | Lazy (evaluated on terminal)   | Eager (triggers execution)      |
+| Chaining             | Can be chained                 | Must be the last in pipeline    |
+
+---
