@@ -1,0 +1,25 @@
+✅ Time Complexity of Arrays.sort() in Java:
+For int[] (primitive types):
+Java uses a Dual-Pivot QuickSort algorithm.
+
+Average Case: O(n log n)
+
+Worst Case: O(n²) (rare due to optimizations)
+
+Best Case: O(n log n)
+
+✅ So the time complexity for Arrays.sort(int[]) is typically:
+
+java
+Copy
+Edit
+O(n log n)
+⚠️ Note:
+For primitive arrays (int[], double[], etc.), it uses Dual-Pivot QuickSort.
+
+For objects (Integer[], String[], etc.), it uses TimSort (a hybrid of MergeSort and InsertionSort):
+
+Best: O(n)
+
+Average/Worst: O(n log n)
+
