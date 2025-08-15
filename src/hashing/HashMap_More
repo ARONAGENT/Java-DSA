@@ -1,0 +1,78 @@
+How Java HashMap Handles Collisions
+
+Hash Function:
+Every key is passed through hashCode() to produce a hash value.
+That hash value determines which "bucket" the key-value pair goes into.
+
+Collision:
+A collision occurs when two different keys produce the same bucket index.
+This is inevitable because there are finite buckets but potentially infinite keys.
+
+Handling in Java 8+:
+Before Java 8: Collisions were handled by a linked list inside each bucket.
+Worst-case time complexity: O(N) (all keys in same bucket).
+
+Java 8 and later: If the number of entries in a bucket exceeds a threshold (default 8),
+it converts the list into a balanced red-black tree.
+This reduces worst-case lookup complexity to O(log N).
+
+Example of Collision
+import java.util.HashMap;
+
+
+WHY this Equal
+  // Two keys with same hash code
+        Object key1 = "FB"; // hashCode = 2236
+        Object key2 = "Ea"; // hashCode = 2236
+
+ That happens because Java’s String.hashCode() method is deterministic and based on a specific polynomial formula, so different strings can sometimes produce the same result — a phenomenon called a hash collision.
+
+ How Java calculates String.hashCode()
+
+ The formula is:
+
+ ℎ𝑎𝑠ℎ 𝐶𝑜𝑑𝑒 =𝑠[0]×31𝑛−1+𝑠[1]×31𝑛−2+⋯+𝑠[𝑛−1]
+ hashCode=s[0]×31n−1
+ +s[1]×31n−2+⋯+s[n−1]
+
+ Where:
+ s[i] = Unicode value of the character at position i
+ n = length of the string
+
+ Example:
+
+ Let’s calculate for "FB":
+ 'F' → ASCII/Unicode = 70
+ 'B' → ASCII/Unicode = 66
+
+ ℎ𝑎𝑠ℎ 𝐶𝑜𝑑𝑒("𝐹𝐵")=70×31+66
+ hashCode("FB")=70×31+66 = 2170+66 = 2236
+
+ Now for "Ea":
+ 'E' → ASCII/Unicode = 69
+ 'a' → ASCII/Unicode = 97
+
+ ℎ𝑎𝑠ℎ 𝐶𝑜𝑑𝑒("𝐸𝑎")=69×31+97
+ hashCode("Ea")=69×31+97
+                =2139+97
+                =2236
+
+
+ Why Same Value?
+
+ Because the multiplication and addition in the formula do not uniquely encode all possible strings — different character combinations can end up producing the same sum.
+ This is inevitable with hashing:
+ There are infinite possible strings.
+ There are only 2³² possible int hash values in Java.
+ So collisions are guaranteed to happen.
+
+Why this works:
+
+Even if hashCode() is the same, equals() is checked to distinguish keys.
+
+Performance Impact
+Case	Time Complexity
+No collision	O(1) average
+Few collisions	O(1) average
+Heavy collisions (Java 7)	O(N) worst case
+Heavy collisions (Java 8+)	O(log N) worst case
